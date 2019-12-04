@@ -41,18 +41,6 @@ class Snake:
             self.body.pop()
             return 0
 
-    def move_right(self):
-        self.position[0] = self.position[0] + 10
-
-    def move_left(self):
-        self.position[0] = self.position[0] - 10
-
-    def move_up(self):
-        self.position[0] = self.position[1] - 10
-
-    def move_down(self):
-        self.position[0] = self.position[1] + 10
-
     def checkcollision(self):
         """ kolizje """
         if self.position[0] > 490 or self.position[0] < 10:
@@ -73,6 +61,7 @@ class Snake:
 
 class Foodspawn:
     """ jedzonko """
+
     def __init__(self):
         self.position = [random.randint(4, 46) * 10, random.randint(4, 46) * 10]
         self.isfoodonscreen = True
@@ -109,7 +98,7 @@ def gameover():
     sys.exit()
 
 
- # 'serce' gry
+# 'serce' gry
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -149,6 +138,6 @@ while True:
     if snake.checkcollision() == 1:
         gameover()
 
-    pygame.display.set_caption('Snake | Score: ' + str(score))
+    pygame.display.set_caption('Snake | Score: ' + str(score))  # punktacja w ramce
     pygame.display.flip()
     fps.tick(20)
